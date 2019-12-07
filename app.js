@@ -19,6 +19,9 @@ let usuarioRoutes = require('./routes/usuario');
 let loginRoutes = require('./routes/login');
 let consultorioRoutes = require('./routes/consultorio');
 let especialidadRoutes = require('./routes/especialidad');
+let provinciaRoutes = require('./routes/provincia');
+let localidadRoutes = require('./routes/localidad');
+let domicilioRoutes = require('./routes/domicilio');
 
 
 // Conexión a la base de datos
@@ -36,6 +39,9 @@ app.use('/usuario', usuarioRoutes);
 app.use('/login', loginRoutes);
 app.use('/consultorio', consultorioRoutes);
 app.use('/especialidad', especialidadRoutes);
+app.use('/provincia', provinciaRoutes);
+app.use('/localidad', localidadRoutes);
+app.use('/domicilio', domicilioRoutes);
 app.use('/', appRoutes);
 
 
