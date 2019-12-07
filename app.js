@@ -22,10 +22,14 @@ let especialidadRoutes = require('./routes/especialidad');
 let provinciaRoutes = require('./routes/provincia');
 let localidadRoutes = require('./routes/localidad');
 let domicilioRoutes = require('./routes/domicilio');
+let busquedaRoutes = require('./routes/busqueda');
+//let uploadRoutes = require('./routes/upload');
+//let imagenesRoutes = require('./routes/imagenes');
+let errorbdRoutes = require('./routes/errorbd');
 
 
 // Conexión a la base de datos
-mongoose.connection.openUri('mongodb://localhost:27017/hospitalDB', (err, res) => {
+mongoose.connection.openUri('mongodb://localhost:27017/curaeDB', (err, res) => {
 
     if (err) throw err;
 
@@ -42,6 +46,10 @@ app.use('/especialidad', especialidadRoutes);
 app.use('/provincia', provinciaRoutes);
 app.use('/localidad', localidadRoutes);
 app.use('/domicilio', domicilioRoutes);
+app.use('/errorbd', errorbdRoutes);
+app.use('/busqueda', busquedaRoutes);
+//app.use('/upload', uploadRoutes);
+//app.use('/img', imagenesRoutes);
 app.use('/', appRoutes);
 
 
