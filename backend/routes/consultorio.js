@@ -40,11 +40,41 @@ app.get('/', (req, res, next) => {
 
 });
 
+app.get('/:id', (req, res, next) => {
+
+    let desde = req.query.desde || 0;
+    let id = req.params.id;
+    desde = Number(desde);
+
+    Consultorio.find({ _id: id })
+        .skip(desde)
+        .exec(
+            (err, consultorios) => {
+                if (err) {
+                    return res.status(500).json({
+                        ok: false,
+                        mensaje: 'Error cargando consultorios',
+                        errors: err
+                    });
+                }
+
+                Consultorio.count({}, (err, conteo) => {
+                    res.status(200).json({
+                        ok: true,
+                        consultorios: consultorios,
+                        total: conteo
+                    });
+                });
+            }
+        );
+
+});
+
 
 // ==========================================
 // Actualizar Consultorio
 // ==========================================
-app.put('/:id', mdAutenticacion.verificaToken, (req, res) => {
+app.put('/:id', (req, res) => {
 
     let id = req.params.id;
     let body = req.body;
@@ -96,7 +126,7 @@ app.put('/:id', mdAutenticacion.verificaToken, (req, res) => {
 // ==========================================
 // Crear un nuevo consultorio
 // ==========================================
-app.post('/', mdAutenticacion.verificaToken, (req, res) => {
+app.post('/', (req, res) => {
 
     let body = req.body;
 
@@ -130,7 +160,7 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 // ============================================
 //   Borrar un consultorio por el id
 // ============================================
-app.delete('/:id', mdAutenticacion.verificaToken, (req, res) => {
+app.delete('/:id', (req, res) => {
 
     let id = req.params.id;
 

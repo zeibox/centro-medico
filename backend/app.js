@@ -2,6 +2,7 @@
 let express = require('express');
 let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
+const cors = require('cors');
 
 // Inicializar variables
 let app = express();
@@ -11,6 +12,9 @@ let app = express();
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// Cors permite que le hagamos peticiones al server desde el front
+app.use(cors());
 
 
 // Importar rutas
@@ -30,7 +34,8 @@ let errorbdRoutes = require('./routes/errorbd');
 
 
 // Conexión a la base de datos
-mongoose.connection.openUri('mongodb://localhost:27017/curaeDB', (err, res) => {
+// { useNewUrlParser: true, useUnifiedTopology: true } fix deprecated warnings
+mongoose.connection.openUri('mongodb://localhost:27017/curaeDB', { useNewUrlParser: true, useUnifiedTopology: true }, (err, res) => {
 
     if (err) throw err;
 
