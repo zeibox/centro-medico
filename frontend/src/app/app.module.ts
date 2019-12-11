@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConsultorioComponent } from './components/panel/consultorio/consultorio.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './components/panel/home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     PanelComponent,
     ConsultoriosComponent,
     ConsultorioComponent,
-    FilterPipe
+    FilterPipe,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

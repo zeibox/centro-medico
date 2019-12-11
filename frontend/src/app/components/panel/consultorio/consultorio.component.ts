@@ -16,6 +16,7 @@ export class ConsultorioComponent implements OnInit {
   edit: boolean;
   delete: boolean;
   add: boolean;
+  errors: string;
 
 
   constructor(
@@ -57,36 +58,13 @@ export class ConsultorioComponent implements OnInit {
   onSubmit() {
     // agregar metodo que le pega a la api POST
     this.postData(this.message.value.consultorios);
-    this.add = true;
-    this.message.reset( {
-      consultorios: {
-        id: '',
-        nombre: '',
-        piso: '',
-        numero: '',
-      }
-    });
-    setTimeout(() => {
-      this.add = false;
-      this.router.navigate(['/consultorios']);
-    }, 2000);
   }
   onSubmitId() {
     // agregar metodo que le pega a la api PUT
     this.putData(this.message.value.consultorios);
-    this.edit = true;
-    setTimeout(() => {
-      this.edit = false;
-    }, 2000);
   }
-
   deleteCons() {
     this.delData();
-    this.delete = true;
-    setTimeout(() => {
-      this.delete = false;
-      this.router.navigate(['/consultorios']);
-    }, 2000);
   }
 // SUBMIT METHODS----------------------------------------------------------
 
@@ -108,7 +86,9 @@ export class ConsultorioComponent implements OnInit {
         }),
       }, { updateOn: 'blur' });  // updateOn cambia la frecuencia en que se validan los inputs
 
-    } catch (error) {}
+    } catch (err) {
+      this.errors = err.error.errors.message;
+    }
   }
 
   async putData(body) {
@@ -116,10 +96,17 @@ export class ConsultorioComponent implements OnInit {
       this.data = await this.restServ
       .putConsultorio(this.idN, body)
       .toPromise();
-      // this.data = this.data.consultorios;
-      // console.log(this.data);
 
-    } catch (error) {}
+      this.errors = null;
+      this.edit = true;
+      setTimeout(() => {
+        this.edit = false;
+        this.router.navigate(['panel/consultorios']);
+      }, 2000);
+
+    } catch (err) {
+      this.errors = err.error.errors.message;
+    }
   }
 
   async postData(body) {
@@ -127,10 +114,17 @@ export class ConsultorioComponent implements OnInit {
       this.data = await this.restServ
       .postConsultorio(body)
       .toPromise();
-      // this.data = this.data.consultorios;
-      // console.log(this.data);
 
-    } catch (error) {}
+      this.errors = null;
+      this.add = true;
+      setTimeout(() => {
+        this.add = false;
+        this.router.navigate(['panel/consultorios']);
+      }, 2000);
+
+    } catch (err) {
+      this.errors = err.error.errors.message;
+    }
   }
 
   async delData() {
@@ -138,14 +132,17 @@ export class ConsultorioComponent implements OnInit {
       this.data = await this.restServ
       .delConsultorio(this.idN)
       .toPromise();
-      // this.data = this.data.consultorios;
-      // console.log(this.data);
 
-    } catch (error) {
-      console.log(error);
+      this.delete = true;
+      setTimeout(() => {
+        this.delete = false;
+        this.router.navigate(['panel/consultorios']);
+      }, 2000);
+
+    } catch (err) {
+      this.errors = err.error.errors.message;
     }
   }
 
-  
 // CRUD METHODS------------------------------------------------------------
 }
