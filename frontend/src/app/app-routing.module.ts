@@ -4,6 +4,8 @@ import { PanelComponent } from './components/panel/panel.component';
 import { ConsultoriosComponent } from './components/panel/consultorios/consultorios.component';
 import { ConsultorioComponent } from './components/panel/consultorio/consultorio.component';
 import { HomeComponent } from './components/panel/home/home.component';
+import { MedicComponent } from './components/panel/medic/medic.component';
+import { MedicsComponent } from './components/panel/medics/medics.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'panel', pathMatch: 'full'},
@@ -11,6 +13,8 @@ const routes: Routes = [
   { path: 'panel/consultorios', component: ConsultoriosComponent },
   { path: 'panel/consultorio', component: ConsultorioComponent },
   { path: 'panel/consultorio/:id', component: ConsultorioComponent },
+  { path: 'panel/medics', component: MedicsComponent },
+  { path: 'panel/medic/:id', component: MedicComponent }
 ];
 
 
