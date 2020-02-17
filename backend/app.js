@@ -35,7 +35,7 @@ let errorbdRoutes = require('./routes/errorbd');
 
 // Conexión a la base de datos
 // { useNewUrlParser: true, useUnifiedTopology: true } fix deprecated warnings
-mongoose.connection.openUri('mongodb://localhost:27017/curaeDB', { useNewUrlParser: true, useUnifiedTopology: true }, (err, res) => {
+mongoose.connection.openUri('mongodb://167.71.250.42:27017/curaeDB', { useNewUrlParser: true, useUnifiedTopology: true }, (err, res) => {
 
     if (err) throw err;
 
