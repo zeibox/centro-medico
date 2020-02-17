@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MedicsService } from '../../../services/medics.service';
+import demodata from '../../../../assets/jsonFiles/medics.json';
 
 @Component({
   selector: 'app-medics',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MedicsComponent implements OnInit {
 
-  constructor() { }
+  data;
+  testData: any = demodata;
+
+  constructor(private medicsServ: MedicsService) { }
 
   ngOnInit(): void {
+    // this.getData();
+    console.log(this.testData);
+  }
+
+  async getData() {
+    try {
+      this.data = await this.medicsServ
+      .getMedicos()
+      .toPromise();
+      this.data = this.data.consultorios;
+
+    } catch (error) {}
   }
 
 }

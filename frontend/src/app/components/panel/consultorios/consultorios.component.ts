@@ -26,6 +26,7 @@ export class ConsultoriosComponent implements OnInit {
       .getConsultorios()
       .toPromise();
       this.data = this.data.consultorios;
+      console.log(this.data);
 
     } catch (error) {}
   }
