@@ -1,6 +1,9 @@
 <div class="container-fluid" style="padding-top: 70px;">
+    <div class="row justify-content-center pb-3">
+        <h1>Medicos</h1>
+    </div>
     <div class="row justify-content-center pb-4">
-        <a name="" id="" class="btn btn-primary" [routerLink]="['/panel/consultorio']" role="button">Agregar Medico</a>
+        <a name="" id="" class="btn btn-primary" [routerLink]="['/panel/medic']" role="button">Agregar Medico</a>
     </div>
     <div class="row justify-content-center">
         <table class="table col-12 col-md-7">
@@ -12,7 +15,7 @@
                     <th scope="col">Especialidad</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let item of testData; let i = index">
+            <tbody *ngFor="let item of testData | async; let i = index">
                 <tr class="pointer" [routerLink]="['/panel/medic', item._id]">
                     <!-- <tr (click)="getInputValue()"> -->
                     <th scope="row"><img src="{{ item.imagen }}" alt=""></th>

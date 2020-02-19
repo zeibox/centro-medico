@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'panel/consultorio', component: ConsultorioComponent },
   { path: 'panel/consultorio/:id', component: ConsultorioComponent },
   { path: 'panel/medics', component: MedicsComponent },
+  { path: 'panel/medic', component: MedicComponent },
   { path: 'panel/medic/:id', component: MedicComponent }
 ];
 

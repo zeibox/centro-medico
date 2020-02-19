@@ -9,8 +9,12 @@ mat-sidenav-content {
 }
 
 mat-sidenav {
-    background-color: lightcoral;
+    background-color: #6c757d;
     width: 200px;
+}
+
+.mat-drawer-side {
+    border-right: none !important;
 }
 
 .container {
@@ -18,7 +22,7 @@ mat-sidenav {
 }
 
 button i.fas.fa-bars.fa-2x {
-    color: grey !important;
+    color: white !important;
     background-color: transparent !important;
     outline: none !important;
     border: none;
@@ -28,11 +32,12 @@ button i.fas.fa-bars.fa-2x {
 button {
     outline: none !important;
     box-shadow: none !important;
+    border-radius: 0 !important;
 }
 
 .menu {
     height: 49px;
-    background: grey;
+    background: #6c757d;
     color: white;
     margin: 0;
     border: none;
@@ -44,4 +49,14 @@ button {
 
 .fixed-btn {
     z-index: 10000 !important;
+}
+
+hr {
+    border: 0.5px solid rgb(185, 185, 185);
+    width: 100%;
+    margin: 10px 0px;
+}
+
+.btn:focus {
+    background-color: #42474b;
 }
