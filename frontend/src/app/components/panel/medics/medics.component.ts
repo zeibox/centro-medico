@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MedicsService } from '../../../services/medics.service';
-import demodata from '../../../../assets/jsonFiles/medics.json';
+import { Observable } from 'rxjs';
+import { Medics } from '../../../interfaces/medics';
 
 @Component({
   selector: 'app-medics',
@@ -10,13 +11,13 @@ import demodata from '../../../../assets/jsonFiles/medics.json';
 export class MedicsComponent implements OnInit {
 
   data;
-  testData: any = demodata;
+  testData: Observable<Medics[]>;
 
   constructor(private medicsServ: MedicsService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
     // this.getData();
-    console.log(this.testData);
+    this.testData = this.medicsServ.getMedics();
   }
 
   async getData() {
@@ -25,7 +26,6 @@ export class MedicsComponent implements OnInit {
       .getMedicos()
       .toPromise();
       this.data = this.data.consultorios;
-
     } catch (error) {}
   }
 

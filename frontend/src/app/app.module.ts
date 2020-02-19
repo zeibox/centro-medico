@@ -15,6 +15,7 @@ import { HomeComponent } from './components/panel/home/home.component';
 import { MedicComponent } from './components/panel/medic/medic.component';
 import { MedicsComponent } from './components/panel/medics/medics.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

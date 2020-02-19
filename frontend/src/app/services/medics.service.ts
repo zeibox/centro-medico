@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 // import { environment } from '../../environments/environment.prod';
 import { environment } from '../../environments/environment';
+import { Medics } from '../interfaces/medics';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,9 @@ export class MedicsService {
   delMedico(id) {
     return this.http.delete(`${ environment.url }/medico/${ id }`)
       .pipe(map(this.extractData));
+  }
+
+  getMedics() {
+    return this.http.get <Medics[]> ('/assets/jsonFiles/medics.json');
   }
 }
