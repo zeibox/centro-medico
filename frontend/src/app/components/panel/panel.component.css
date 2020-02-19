@@ -60,3 +60,7 @@ hr {
 .btn:focus {
     background-color: #42474b;
 }
+
+mat-sidenav-content div button:focus {
+    background-color: transparent !important;
+}
